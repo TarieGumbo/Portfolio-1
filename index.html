@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Business × AI</title>
+<meta name="description" content="Portfolio of [Your Name] — Business Information Systems & AI/Business Analytics.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FAF8F3;
+    --paper-dim:#F1EEE6;
+    --ink:#171B26;
+    --ink-soft:#4B5162;
+    --line:#E3DFD3;
+    --teal:#1F8A82;
+    --teal-soft:#E4F1EF;
+    --amber:#D89B3C;
+    --amber-soft:#FBF0DD;
+    --coral:#C85A48;
+    --coral-soft:#F8E9E5;
+    --radius:4px;
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.1;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;}
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(250,248,243,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:68px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+  }
+  .navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .navlinks a{
+    text-decoration:none;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    transition:color 0.15s ease;
+  }
+  .navlinks a:hover{color:var(--teal);}
+  .nav-cta{
+    font-size:0.85rem;
+    padding:8px 16px;
+    border:1px solid var(--ink);
+    border-radius:var(--radius);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--paper);}
+  .menu-toggle{display:none;}
+
+  @media (max-width:760px){
+    .navlinks{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--teal);
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--teal);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.35;}
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 4.1rem);
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--teal);
+  }
+  .hero-sub{
+    margin-top:24px;
+    max-width:56ch;
+    font-size:1.1rem;
+    color:var(--ink-soft);
+  }
+  .hero-actions{
+    margin-top:36px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:500;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--teal); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink); transform:translateY(-1px);}
+
+  /* signature: signal readout */
+  .readout{
+    margin-top:56px;
+    max-width:520px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 22px;
+    background:var(--paper-dim);
+  }
+  .readout-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:14px;
+  }
+  .readout-head .mono{color:var(--ink-soft);}
+  .readout-bar{
+    position:relative;
+    height:8px;
+    border-radius:4px;
+    background:linear-gradient(90deg, var(--teal) 0%, var(--teal) 46%, var(--amber) 46%, var(--amber) 54%, var(--coral) 54%, var(--coral) 100%);
+    opacity:0.25;
+  }
+  .readout-marker{
+    position:absolute;
+    top:-5px;
+    left:50%;
+    width:18px; height:18px;
+    margin-left:-9px;
+    background:var(--ink);
+    border-radius:50%;
+    border:3px solid var(--paper-dim);
+  }
+  .readout-labels{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+  }
+  .readout-labels .mono{color:var(--ink-soft);}
+  .readout-labels .mono.active{color:var(--ink); font-weight:500;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{
+    padding:88px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:48px;
+  }
+  .section-head .mono{color:var(--teal);}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.1rem);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .about-col{
+    padding:36px;
+  }
+  .about-col.business{
+    background:var(--teal-soft);
+    border-right:1px solid var(--line);
+  }
+  .about-col.ai{
+    background:var(--coral-soft);
+  }
+  .about-col .mono{
+    display:block;
+    margin-bottom:14px;
+  }
+  .about-col.business .mono{color:var(--teal);}
+  .about-col.ai .mono{color:var(--coral);}
+  .about-col p{margin:0; color:var(--ink-soft);}
+  .about-lede{
+    grid-column:1 / -1;
+    padding:28px 36px;
+    border-top:1px solid var(--line);
+    background:var(--paper);
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    font-style:italic;
+    color:var(--ink);
+  }
+  @media (max-width:700px){
+    .about-grid{grid-template-columns:1fr;}
+    .about-col.business{border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  /* ---------- SKILLS ---------- */
+  .bands{
+    display:flex;
+    flex-direction:column;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .band{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    border-top:1px solid var(--line);
+  }
+  .band:first-child{border-top:none;}
+  .band-label{
+    padding:22px 24px;
+    background:var(--paper-dim);
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+  }
+  .band-tags{
+    padding:22px 24px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:center;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    color:var(--ink-soft);
+  }
+  @media (max-width:640px){
+    .band{grid-template-columns:1fr;}
+    .band-label{border-bottom:1px solid var(--line);}
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+    gap:24px;
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+    background:var(--paper);
+    transition:border-color 0.15s ease, transform 0.15s ease;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+  }
+  .card:hover{border-color:var(--ink); transform:translateY(-2px);}
+  .card-badge{
+    display:inline-block;
+    align-self:flex-start;
+    padding:4px 10px;
+    border-radius:3px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    margin-bottom:16px;
+  }
+  .badge-teal{background:var(--teal-soft); color:var(--teal);}
+  .badge-amber{background:var(--amber-soft); color:#8a6420;}
+  .badge-coral{background:var(--coral-soft); color:var(--coral);}
+  .card h3{font-size:1.2rem; margin-bottom:10px;}
+  .card p{color:var(--ink-soft); font-size:0.95rem; flex-grow:1;}
+  .card-stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:18px;
+  }
+  .card-stack span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    color:var(--ink-soft);
+  }
+  .card-stack span:not(:last-child)::after{content:"·"; margin-left:6px; color:var(--line);}
+  .card-link{
+    margin-top:18px;
+    font-size:0.85rem;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    align-self:flex-start;
+  }
+  .card-link:hover{color:var(--teal); border-color:var(--teal);}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{
+    position:relative;
+    padding-left:28px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:5px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .tl-item{
+    position:relative;
+    padding-bottom:40px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-28px; top:5px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--teal);
+  }
+  .tl-date{color:var(--ink-soft);}
+  .tl-item h3{font-size:1.1rem; margin-top:6px;}
+  .tl-item .tl-org{color:var(--teal); font-size:0.9rem; margin-top:2px;}
+  .tl-item p{color:var(--ink-soft); font-size:0.95rem; margin-top:10px; max-width:60ch;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    padding:80px 0 40px;
+  }
+  .contact-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  footer h2{
+    font-size:clamp(1.9rem,4vw,3rem);
+    max-width:12ch;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .contact-links a{
+    text-decoration:none;
+    font-size:0.95rem;
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+  }
+  .contact-links a:hover{border-color:var(--ink);}
+  .foot-note{
+    margin-top:64px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    color:var(--ink-soft);
+    font-size:0.8rem;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  ::selection{background:var(--teal); color:var(--paper);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">[Your Name]</div>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:none; padding-bottom:0;">
+    <div class="wrap">
+      <div class="eyebrow mono"><span class="dot"></span> Available for graduate & analyst roles</div>
+      <h1>Business systems thinking, <em>tuned</em> for AI.</h1>
+      <p class="hero-sub">
+        I'm [Your Name] — I trained in Business Information Systems before specialising in AI & Business Analytics.
+        I build the bridge between what a model can predict and what a business can actually act on.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+
+      <div class="readout">
+        <div class="readout-head">
+          <span class="mono">Working profile</span>
+          <span class="mono">Blended signal</span>
+        </div>
+        <div class="readout-bar"><div class="readout-marker"></div></div>
+        <div class="readout-labels">
+          <span class="mono active">Business systems</span>
+          <span class="mono active">AI & analytics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="wrap"><div style="height:1px; background:var(--line); margin-top:80px;"></div></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">01 — About</span>
+        <h2>Two lenses, one practice.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-col business">
+          <span class="mono">The business lens</span>
+          <p>
+            My undergrad in Business Information Systems trained me to read an organisation before I touch a dataset —
+            processes, incentives, stakeholders, and where a system actually creates or destroys value.
+            [Add 1–2 sentences: a specific business skill, e.g. requirements gathering, process mapping, stakeholder management.]
+          </p>
+        </div>
+        <div class="about-col ai">
+          <span class="mono">The AI lens</span>
+          <p>
+            My postgrad in AI & Business Analytics gave me the technical grounding to design and evaluate models responsibly —
+            not just build them, but know when a prediction is trustworthy enough to hand to a decision-maker.
+            [Add 1–2 sentences: e.g. specific coursework, tools, or a methodological stance you hold.]
+          </p>
+        </div>
+        <div class="about-lede">
+          "The hardest part of AI in business isn't the model — it's the handoff." [Optional: replace with your own line, or delete this row.]
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">02 — Skills</span>
+        <h2>What I bring to a team.</h2>
+      </div>
+
+      <div class="bands">
+        <div class="band">
+          <div class="band-label">Business analysis</div>
+          <div class="band-tags">
+            <span class="tag">Requirements gathering</span>
+            <span class="tag">Process mapping</span>
+            <span class="tag">Stakeholder management</span>
+            <span class="tag">Business cases</span>
+          </div>
+        </div>
+        <div class="band">
+          <div class="band-label">Data & AI</div>
+          <div class="band-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Predictive modelling</span>
+            <span class="tag">Explainable AI (SHAP)</span>
+          </div>
+        </div>
+        <div class="band">
+          <div class="band-label">Tools & platforms</div>
+          <div class="band-tags">
+            <span class="tag">Streamlit</span>
+            <span class="tag">Power BI / Tableau</span>
+            <span class="tag">Git & GitHub</span>
+            <span class="tag">Google Cloud / Sheets</span>
+          </div>
+        </div>
+        <div class="band">
+          <div class="band-label">Ways of working</div>
+          <div class="band-tags">
+            <span class="tag">Agile / Scrum</span>
+            <span class="tag">Client presentations</span>
+            <span class="tag">Cross-functional collaboration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">03 — Projects</span>
+        <h2>Selected work.</h2>
+      </div>
+
+      <div class="projects-grid">
+        <div class="card">
+          <span class="card-badge badge-teal">AI SYSTEM DESIGN</span>
+          <h3>Customer churn prediction system</h3>
+          <p>
+            Designed a rule-based churn scoring engine and dashboard, with human review gates built in
+            at ingestion, scoring, and retraining — treating oversight as a first-class design requirement, not an afterthought.
+          </p>
+          <div class="card-stack"><span>Python</span><span>Streamlit</span><span>Google Sheets</span><span>Flask</span></div>
+          <a href="#" class="card-link">View project →</a>
+        </div>
+
+        <div class="card">
+          <span class="card-badge badge-amber">STRATEGY & CONSULTING</span>
+          <h3>AI transformation proposal</h3>
+          <p>
+            Built a phased AI adoption roadmap for a client organisation, mapping current AI maturity to a
+            staged Foundation → Pilot → Scale investment plan.
+          </p>
+          <div class="card-stack"><span>Strategy</span><span>Change management</span><span>ROI modelling</span></div>
+          <a href="#" class="card-link">View project →</a>
+        </div>
+
+        <div class="card">
+          <span class="card-badge badge-coral">RESEARCH</span>
+          <h3>[Add your third project]</h3>
+          <p>
+            [One or two sentences: the problem, your specific contribution, and the outcome or what you learned.]
+          </p>
+          <div class="card-stack"><span>[Tool]</span><span>[Tool]</span></div>
+          <a href="#" class="card-link">View project →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">04 — Experience</span>
+        <h2>Timeline.</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date mono">2024 — Present</div>
+          <h3>[Postgraduate degree title], AI & Business Analytics</h3>
+          <div class="tl-org">[University name]</div>
+          <p>[One sentence: focus area, standout unit, or capstone project.]</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date mono">[Year] — [Year]</div>
+          <h3>[Role title]</h3>
+          <div class="tl-org">[Company / organisation]</div>
+          <p>[One sentence: what you owned and one measurable outcome.]</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date mono">[Year] — [Year]</div>
+          <h3>Bachelor's degree, Business Information Systems</h3>
+          <div class="tl-org">[University name]</div>
+          <p>[One sentence: focus area or a project you're proud of.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <h2>Let's talk about your next hire.</h2>
+      <div class="contact-links">
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 [Your Name]. Built and hosted on GitHub Pages.</span>
+      <span class="mono">Signal: business × AI</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
